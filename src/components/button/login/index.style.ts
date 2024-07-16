@@ -12,7 +12,7 @@ export const Continuebtn = styled.button`
 
     border:none;
     border-radius: var(--Large, 12px);
-    background: var(--Primary-Primary500, #1D93F3);
+    background: #A2CC71;
 
     color: var(--Sub-White, #FFF);
     font-family: 'Pretendard-Regular', sans-serif;
