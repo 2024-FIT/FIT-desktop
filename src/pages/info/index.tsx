@@ -2,6 +2,8 @@ import React from 'react';
 import Lottie from "lottie-react";
 import runningLottie from "@/assets/info/running.json";
 
+import Login from "@/components/login/index"
+
 import * as S from '@/pages/info/index.style';
 
 const Index = () => {
@@ -27,6 +29,7 @@ const Index = () => {
         }} 
       />
       <S.BlackBox/>
+        <Login></Login>
     </div>
   );
 };
