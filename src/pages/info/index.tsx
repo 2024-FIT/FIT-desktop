@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from "lottie-react";
-import runningLottie from "@/assets/info/3048876-uhd_3840_2160_24fps.mp4.lottie.json";
+import runningLottie from "@/assets/info/running.json";
 
 import * as S from '@/pages/info/index.style';
 

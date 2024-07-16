@@ -3,18 +3,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import config from "@/components/constants/login/config.json";
-import LoginButton from "@/components/Button/Button";
+import LoginButton from "@/components/button/login/index";
 import TextField from "@/components/textfield/index";
 import CustomAlert from "@/components/alert/index";
 import seugiImg from "@/assets/image/onbording/Start/seugilogo.svg";
 import showPasswordimg from "@/assets/image/onbording/show_fill.svg";
 import hidePasswordimg from "@/assets/image/onbording/hide_fill.svg";
-import AppleLogo from "@/assets/image/onbording/Start/applelogo.svg";
-import GoogleLogo from "@/assets/image/onbording/Start/googlelogo.svg";
-import Cloud1 from "@/assets/image/onbording/Start/LoginCloud1.svg";
-import Cloud2 from "@/assets/image/onbording/Start/LoginCloud2.svg";
-import Sun from "@/assets/image/onbording/Start/LoginSun.svg";
-import Divider from "@/assets/image/onbording/Start/Divider.svg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -103,9 +97,6 @@ const Login = () => {
 
   return (
     <S.LoginMain>
-      <S.Cloud1 src={Cloud1} />
-      <S.Cloud2 src={Cloud2} />
-      <S.Sun src={Sun} />
       <S.LoginFirstWrap>
         <S.Fheader>
           <S.Header>
@@ -162,19 +153,6 @@ const Login = () => {
               </S.Gosignup>{" "}
             </S.Body1>
           </S.Buttonpart>
-          <S.Orpart>
-            <S.Dividerimg src={Divider} />
-            <S.Caption1>또는</S.Caption1>
-            <S.Dividerimg src={Divider} />
-          </S.Orpart>
-          <S.Oauthpart>
-            <S.Authlogin>
-              <S.LogoImg src={AppleLogo} />
-            </S.Authlogin>
-            <S.Authlogin>
-              <S.LogoImg src={GoogleLogo} />
-            </S.Authlogin>
-          </S.Oauthpart>
         </S.Inputarea>
       </S.LoginFirstWrap>
       {showAlert && (
