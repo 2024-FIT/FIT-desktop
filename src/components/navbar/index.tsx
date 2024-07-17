@@ -42,7 +42,7 @@ const Navbar = () => {
     }, [chatRooms]);
 
     return (
-        <div>
+        <S.Container>
             <S.SideBarMenu>
                 <S.SideBarButton
                     onClick={() => handleButtonClick("home", "/home")}
@@ -65,7 +65,10 @@ const Navbar = () => {
                     <S.SideAvatarImg src={AvatarImg} />
                 </S.SideAvatarImgWrap>
             </S.SideBarMenu>
-        </div>
+            <S.Content>
+                
+            </S.Content>
+        </S.Container>
     )
 }
 
