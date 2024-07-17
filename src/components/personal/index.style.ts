@@ -4,6 +4,64 @@ export const Container = styled.div`
 
 `;
 
+export const AllTitle = styled.div`
+
+`
+
+export const HealtTitle = styled.div`
+    padding-left: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+`
+
+export const HealthTitleNameWrap = styled.span`
+    width: 72px;
+    height: 33px;
+    flex-shrink: 0;
+
+    border-radius: 50px;
+    background: #A2CC71;
+
+    margin-top: 30px;
+`
+
+export const HealthTitleName = styled.div`
+    display: flex;
+    /* justify-content: center; */
+    margin-top: 5px;
+    align-items: center;
+    /* width: 61px;
+    height: 27px; */
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    color: var(--Sub-White, #FFF);
+
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+`
+
+export const HealthNow = styled.span`
+    color: #5B5B5B;
+
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    padding-left: 11px;
+
+    margin-top: 30px;
+`
+
 export const HealthStatus = styled.div`
     text-align: center;
     width: 349px;
@@ -27,9 +85,14 @@ export const Title = styled.h2`
 `;
 
 export const CharacterImg = styled.img`
-  width: 100px;
-  height: 100px;
-  margin-bottom: 16px;
+    width: 199px;
+    height: 166px;
+    flex-shrink: 0;
+    padding-left: 30px;
+
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
 `;
 
 export const HeightWeight = styled.div`
@@ -53,18 +116,15 @@ export const BMIStatus = styled.div`
 `;
 
 export const BMIBar = styled.div`
-  width: 80%;
-  height: 16px;
-  background: linear-gradient(to right, #00ff00, #ffff00, #ff0000);
-  position: relative;
+
 `;
 
-export const BMIPointer = styled.div`
-  width: 10px;
+export const BMIPointer = styled.img`
+  /* width: 10px;
   height: 10px;
   background: black;
   position: absolute;
-  top: 3px;
+  top: 3px; */
 `;
 
 export const DietDiary = styled.div`
