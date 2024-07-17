@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import * as S from '@/components/calendar/index.style';
 
 import TodayMenuImg from "@/assets/today/todaymymeal.svg"
