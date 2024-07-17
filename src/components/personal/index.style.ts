@@ -67,6 +67,7 @@ export const HealthStatus = styled.div`
     width: 349px;
     height: 382px;
     flex-shrink: 0;
+    cursor: pointer;
 
     border-radius: 10px;
     background: var(--Sub-White, #FFF);
@@ -80,19 +81,20 @@ export const Title = styled.h2`
   font-size: 1.2em;
   margin-bottom: 8px;
 
-  margin-left: 30px;
+  margin-left: 40px;
   margin-top: 15px;
 `;
 
-export const CharacterImg = styled.img`
+export const CharacterImg = styled.h1`
     width: 199px;
-    height: 166px;
+    height: 140px;
     flex-shrink: 0;
     padding-left: 30px;
-
+    font-size:30px;
+    font-family:pretendard;
     display: flex;
     justify-content: flex-start;
-    margin-top: 20px;
+    margin-top: 30px;
 `;
 
 export const HeightWeight = styled.div`
@@ -103,12 +105,21 @@ export const HeightWeight = styled.div`
 `;
 
 export const Height = styled.div`
-  font-size: 1em;
+  font-size: 1.5em;
+  margin-left: 50px;
+  font-family: pretendard;
 `;
 
 export const Weight = styled.div`
-  font-size: 1em;
+  font-size: 1.5em;
+  margin-right: 50px;
+  font-family: pretendard;
 `;
+
+export const bminum = styled.div`
+  font-size: 1.5em;
+  font-family: pretendard;
+`
 
 export const BMIStatus = styled.div`
   display: flex;
@@ -222,6 +233,9 @@ export const InfoIcon = styled.img`
   width: 24px;
   height: 24px;
   margin-bottom: 16px;
+  margin-top:10px;
+  margin-left:10px;
+  float:left;
 `;
 
 export const CalorieDetails = styled.div`
@@ -239,12 +253,14 @@ export const CalorieItem = styled.div`
 
 export const CalorieLabel = styled.div`
     font-size: 0.9em;
+    margin-left: 30px;
 `
 
 
 export const CalorieValue = styled.div`
     font-size: 0.9em; 
-    font-weight: bold;;
+    font-weight: bold;
+    margin-right:30px;
 `
 
 export const CalorieChart = styled.div`

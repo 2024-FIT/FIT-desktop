@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as S from '@/pages/profile/index.style';
 import Side from "@/components/navbar/index";
 import arrow from "@/assets/arrow.svg";
@@ -9,14 +9,15 @@ import level1 from "@/assets/profile/level1.png";
 import normal from "@/assets/profile/normal.png";
 import low from "@/assets/profile/low.png";
 
+
+
 const Index: React.FC = () => {
-    const [tall, setTall] = useState<number>(170);
-    const [weight, setWeight] = useState<number>(120.0);
+    const [tall, setTall] = useState<number>(122);
+    const [weight, setWeight] = useState<number>(32);
     const [activity, setActivity] = useState<number>(0.2);
-    const [age, setAge] = useState<number>(6);
+    const [age, setAge] = useState<number>(7);
     const [gender, setGender] = useState<number>(1);
     const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [characterImage, setCharacterImage] = useState<string>(normal);
 
     const genderload = (num: number) => {
         return num === 1 ? "남" : "여";
@@ -33,20 +34,17 @@ const Index: React.FC = () => {
 
     const bmi = Number((weight / ((tall / 100) ** 2)).toFixed(1));
 
-    useEffect(() => {
-        const getCharacterImage = (): string => {
-            if (bmi >= 30) {
-                return level2;
-            } else if (bmi >= 25) {
-                return level1;
-            } else if (bmi >= 18.5) {
-                return normal;
-            } else {
-                return low;
-            }
+    const getCharacterImage = (): string => {
+        if (bmi >= 30) {
+            return level2;
+        } else if (bmi >= 25) {
+            return level1;
+        } else if (bmi >= 18.5) {
+            return normal;
+        } else {
+            return low;
         }
-        setCharacterImage(getCharacterImage());
-    }, [bmi]);
+    };
 
     return (
         <div style={{
@@ -62,7 +60,7 @@ const Index: React.FC = () => {
                     <S.Title>
                         <S.Name>김민규</S.Name><S.NameText>님의 건강상태</S.NameText>
                     </S.Title>
-                    <S.Character style={{ backgroundImage: `url(${characterImage})` }} />
+                    <S.Character style={{ backgroundImage: `url(${getCharacterImage()})` }} />
                     <Bmibar bmi={bmi} />
                 </S.LeftBox>
                 <S.RightBox>
@@ -81,7 +79,7 @@ const Index: React.FC = () => {
                         {isEditing ? (
                             <S.Input
                                 type="number"
-                                step="1"
+                                step="0.1"
                                 value={weight}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWeight(Number(e.target.value))}
                             />

@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from '@/components/personal/index.style'; 
 
 import CharacterImg from '@/assets/fit.svg'; 
-import InfoIcon from '@/assets/info_icon.png'; 
+import InfoIcon from '@/assets/info_icon.svg'; 
 
 import FatMyImg from "@/assets/main/fatmyimg.svg"
 import BMIbar from "@/assets/main/BMIbar.svg"
@@ -29,16 +29,17 @@ const Dashboard = () => {
                 <S.HealthNow>님의 건강상태</S.HealthNow>
             </S.HealtTitle>
           {/* <S.Title>김민규 님의 건강상태</S.Title> */}
-          <S.CharacterImg src={FatMyImg} alt="Character" />
+          <S.CharacterImg>우리 아이의 건강상태는?</S.CharacterImg>
           <S.HeightWeight>
-            <S.Height>180cm</S.Height>
-            <S.Weight>120kg</S.Weight>
+            <S.Height>키: ?</S.Height>
+            <S.Weight>몸무게: ?</S.Weight>
           </S.HeightWeight>
           <S.BMIStatus>
             <S.BMIBar>
               <S.BMIPointer src={BMIbar}/> 
             </S.BMIBar>
           </S.BMIStatus>
+          <S.bminum>BMI : ?</S.bminum>
         </S.HealthStatus>
       
       <S.DietDiary>
@@ -93,8 +94,8 @@ const Dashboard = () => {
       </S.RecommendedDiet>
 
       <S.CalorieInfo>
-        <S.Title>열량 정보</S.Title>
         <S.InfoIcon src={InfoIcon} alt="Info" />
+        <S.Title>열량 정보</S.Title>
         <S.CalorieDetails>
           <S.CalorieItem>
             <S.CalorieLabel>권장 열량</S.CalorieLabel>
