@@ -4,22 +4,37 @@ import * as S from '@/components/personal/index.style';
 import CharacterImg from '@/assets/fit.svg'; 
 import InfoIcon from '@/assets/info_icon.png'; 
 
+import FatMyImg from "@/assets/main/fatmyimg.svg"
+import BMIbar from "@/assets/main/BMIbar.svg"
+
+interface DashboardProps {
+  userName: string;
+}
+  
+//   const Dashboard: React.FC<DashboardProps> = ({ userName }) => {
 const Dashboard = () => {
-  return (
-    <S.Container>
-      <S.HealthStatus>
-        <S.Title>김민규 님의 건강상태</S.Title>
-        <S.CharacterImg src={CharacterImg} alt="Character" />
-        <S.HeightWeight>
-          <S.Height>180cm</S.Height>
-          <S.Weight>120kg</S.Weight>
-        </S.HeightWeight>
-        <S.BMIStatus>
-          <S.BMIBar>
-            <S.BMIPointer style={{ left: '80%' }} /> 
-          </S.BMIBar>
-        </S.BMIStatus>
-      </S.HealthStatus>
+    return (
+      <S.Container>
+        <S.HealthStatus>
+            <S.HealtTitle>
+                {/* <div>{userName}</div> */}
+                <S.HealthTitleNameWrap>
+                    <S.HealthTitleName>김민규</S.HealthTitleName>
+                </S.HealthTitleNameWrap>
+                <S.HealthNow>님의 건강상태</S.HealthNow>
+            </S.HealtTitle>
+          {/* <S.Title>김민규 님의 건강상태</S.Title> */}
+          <S.CharacterImg src={FatMyImg} alt="Character" />
+          <S.HeightWeight>
+            <S.Height>180cm</S.Height>
+            <S.Weight>120kg</S.Weight>
+          </S.HeightWeight>
+          <S.BMIStatus>
+            <S.BMIBar>
+              <S.BMIPointer src={BMIbar}/> 
+            </S.BMIBar>
+          </S.BMIStatus>
+        </S.HealthStatus>
       
       <S.DietDiary>
         <S.Title>식단 다이어리</S.Title>

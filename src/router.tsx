@@ -6,6 +6,7 @@ import Login from '@/pages/login/index'
 import Signup from '@/pages/signup/index'
 import MainPage from "@/pages/main/index"
 import Profile from '@/pages/profile/index';
+import Today from "@/pages/today/index"
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/today" element={<Today />} />
       </Routes>
     </BrowserRouter>
   );
