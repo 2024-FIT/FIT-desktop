@@ -16,13 +16,14 @@ const Dashboard = () => {
     return (
       <S.Container>
         <S.HealthStatus>
-            <S.HealtTitle>
+                <S.HealtTitle>
                 {/* <div>{userName}</div> */}
                 <S.HealthTitleNameWrap>
                     <S.HealthTitleName>김민규</S.HealthTitleName>
                 </S.HealthTitleNameWrap>
                 <S.HealthNow>님의 건강상태</S.HealthNow>
             </S.HealtTitle>
+
           {/* <S.Title>김민규 님의 건강상태</S.Title> */}
           <S.CharacterImg src={FatMyImg} alt="Character" />
           <S.HeightWeight>
