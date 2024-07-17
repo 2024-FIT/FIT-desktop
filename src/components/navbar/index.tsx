@@ -14,7 +14,7 @@ import SelectDay from "@/assets/sidebar/home_fill_green.svg";
 import SelectChats from "@/assets/image/sidebar/selectgroup.svg";
 import SelectBell from "@/assets/image/sidebar/selectbell.svg";
 
-type SelectedButton = "home" | "today" | "profile" | null;
+type SelectedButton = "main" | "today" | "profile" | null;
 
 const Navbar = () => {
     const [selected, setSelected] = useState<SelectedButton>(null);
@@ -45,10 +45,10 @@ const Navbar = () => {
         <S.Container>
             <S.SideBarMenu>
                 <S.SideBarButton
-                    onClick={() => handleButtonClick("home", "/home")}
-                    $isSelected={selected === "home"}
+                    onClick={() => handleButtonClick("main", "/main")}
+                    $isSelected={selected === "main"}
                 >
-                    <S.SideBarImage src={selected === "home" ? SelectHome : Home} />
+                    <S.SideBarImage src={selected === "main" ? SelectHome : Home} />
                 </S.SideBarButton>
                 <S.SideBarButton
                     onClick={() => handleButtonClick("today", "/today")}
