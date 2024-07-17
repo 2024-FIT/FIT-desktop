@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const mainbox = styled.div`
+export const MainBox = styled.div`
     width: 80vw;
     height: 85vh;
     flex-shrink: 0;
@@ -13,25 +13,27 @@ export const mainbox = styled.div`
     right: 7%;
 `;
 
-export const leftbox = styled.div`
+export const LeftBox = styled.div`
     height: 100%;
     width: 40%;
     position: relative;
     float: left;
 `;
 
-export const character = styled.div`
+export const Character = styled.div`
     height: 40%;
     width: 100%;
     flex-shrink: 0;
-    background: url("https://velog.velcdn.com/images/jva102/post/236fabe9-5bc7-4790-93c0-3c473c5cd393/image.png") 50% / contain no-repeat;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
 `;
 
-export const back = styled.img`
+export const Back = styled.img`
     width: 39px;
     height: 31px;
     flex-shrink: 0;
@@ -39,9 +41,10 @@ export const back = styled.img`
     position: absolute;
     top: 2%;
     left: 2%;
+    cursor: pointer;
 `;
 
-export const title = styled.div`
+export const Title = styled.div`
     width: 190px;
     position: absolute;
     transform: translate(-50%);
@@ -49,7 +52,7 @@ export const title = styled.div`
     left: 50%;
 `;
 
-export const name = styled.div`
+export const Name = styled.div`
     width: 72px;
     height: 33px;
     flex-shrink: 0;
@@ -68,7 +71,7 @@ export const name = styled.div`
     font-weight: 700;
 `;
 
-export const nameText = styled.span`
+export const NameText = styled.span`
     color: #5B5B5B;
     text-align: center;
     font-family: Pretendard;
@@ -80,31 +83,14 @@ export const nameText = styled.span`
     right: 0;
 `;
 
-export const BMIbar = styled.div`
-    width: 70%;
-    height: 35px;
-    background: linear-gradient(90deg, #A8DAFF 20%, #AAF27E 20%, #AAF27E 40%, #EBFF6F 40%, #EBFF6F 60%, #FFDF6F 60%, #FFDF6F 80%, #FF6F6F 80%);
-    position: absolute;
-    transform: translate(-50%);
-    left: 50%;
-    top: 80%;
-    border-radius: 10px;
-`;
-
-export const underarrow = styled.img`
-    position: absolute;
-    top: 78%;
-    left: 82%;
-`;
-
-export const rightbox = styled.div`
+export const RightBox = styled.div`
     float: right;
     height: 100%;
     width: 60%;
     position: relative;
 `;
 
-export const valuebox = styled.div`
+export const ValueBox = styled.div`
     width: 45%;
     height: 50%;
     position: absolute;
@@ -113,7 +99,7 @@ export const valuebox = styled.div`
     top: 50%;
 `;
 
-export const valuename = styled.p`
+export const ValueName = styled.p`
     width: 50%;
     color: #000;
     text-align: left;
@@ -126,7 +112,7 @@ export const valuename = styled.p`
     float: left;
 `;
 
-export const value = styled.p`
+export const Value = styled.p`
     width: 50%;
     color: var(--Gray-Gray600, #787878);
     text-align: right;
@@ -139,7 +125,7 @@ export const value = styled.p`
     float: right;
 `;
 
-export const input = styled.input`
+export const Input = styled.input`
     width: calc(50% - 10px); /* Adjust width to account for border and margin */
     color: var(--Gray-Gray600, #787878);
     text-align: right;
@@ -157,7 +143,7 @@ export const input = styled.input`
     }
 `;
 
-export const select = styled.select`
+export const Select = styled.select`
     width: calc(50% - 10px); /* Adjust width to account for border and margin */
     color: var(--Gray-Gray600, #787878);
     text-align: right;
@@ -166,7 +152,7 @@ export const select = styled.select`
     font-style: normal;
     font-weight: 500;
     line-height: 1.6;
-    margin-bottom: 4%;
+    margin-bottom: 4.1%;
     float: right;
     border: none;
     border-bottom: 1px solid #787878;
@@ -175,26 +161,22 @@ export const select = styled.select`
     }
 `;
 
-export const editbutton = styled.div`
-    width: 401px;
-    height: 54px;
-    border-radius: var(--Large, 12px);
-    background: #A2CC71;
-    border: none;
-    position: absolute;
-    transform: translate(-50%);
-    top: 80%;
-    left: 50%;
-    color: var(--Sub-White, #FFF);
-    text-align: center;
+export const EditButton = styled.button`
+    width: 200px;
+    height: 50px;
+    background-color: #A2CC71;
+    color: white;
     font-family: Pretendard;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 54px;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 25px;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
     cursor: pointer;
     &:hover {
-        color: lightgray;
-        background-color: #8AAE60;
+        background-color: #8FB362;
     }
 `;

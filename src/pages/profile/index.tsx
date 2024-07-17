@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from '@/pages/profile/index.style';
 import Side from "@/components/navbar/index";
 import arrow from "@/assets/arrow.svg";
-import underarrow from "@/assets/profile/underarrow.svg";
+import { useNavigate } from "react-router-dom";
+import Bmibar from "@/components/bmibar/index";
+import level2 from "@/assets/profile/level2.png";
+import level1 from "@/assets/profile/level1.png";
+import normal from "@/assets/profile/normal.png";
+import low from "@/assets/profile/low.png";
 
-const Index = () => {
-    const [tall, setTall] = useState(170);
-    const [weight, setWeight] = useState(120.0);
-    const [activity, setActivity] = useState(0.2);
-    const [age, setAge] = useState(6);
-    const [gender, setGender] = useState(1);
-    const [isEditing, setIsEditing] = useState(false);
+const Index: React.FC = () => {
+    const [tall, setTall] = useState<number>(170);
+    const [weight, setWeight] = useState<number>(120.0);
+    const [activity, setActivity] = useState<number>(0.2);
+    const [age, setAge] = useState<number>(6);
+    const [gender, setGender] = useState<number>(1);
+    const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [characterImage, setCharacterImage] = useState<string>(normal);
 
     const genderload = (num: number) => {
         return num === 1 ? "남" : "여";
@@ -20,6 +26,28 @@ const Index = () => {
         setIsEditing(!isEditing);
     };
 
+    const navigate = useNavigate();
+    const reback = () => {
+        navigate("/home");
+    }
+
+    const bmi = Number((weight / ((tall / 100) ** 2)).toFixed(1));
+
+    useEffect(() => {
+        const getCharacterImage = (): string => {
+            if (bmi >= 30) {
+                return level2;
+            } else if (bmi >= 25) {
+                return level1;
+            } else if (bmi >= 18.5) {
+                return normal;
+            } else {
+                return low;
+            }
+        }
+        setCharacterImage(getCharacterImage());
+    }, [bmi]);
+
     return (
         <div style={{
             width: '100vw',
@@ -28,79 +56,78 @@ const Index = () => {
             background: "#F6FFF7",
         }}>
             <Side />
-            <S.mainbox>
-                <S.leftbox>
-                    <S.back src={arrow} />
-                    <S.title>
-                        <S.name>김민규</S.name><S.nameText>님의 건강상태</S.nameText>
-                    </S.title>
-                    <S.character />
-                    <S.BMIbar />
-                    <S.underarrow src={underarrow} />
-                </S.leftbox>
-                <S.rightbox>
-                    <S.valuebox>
-                        <S.valuename>키</S.valuename>
+            <S.MainBox>
+                <S.LeftBox>
+                    <S.Back src={arrow} onClick={reback} />
+                    <S.Title>
+                        <S.Name>김민규</S.Name><S.NameText>님의 건강상태</S.NameText>
+                    </S.Title>
+                    <S.Character style={{ backgroundImage: `url(${characterImage})` }} />
+                    <Bmibar bmi={bmi} />
+                </S.LeftBox>
+                <S.RightBox>
+                    <S.ValueBox>
+                        <S.ValueName>키</S.ValueName>
                         {isEditing ? (
-                            <S.input
+                            <S.Input
                                 type="number"
                                 value={tall}
-                                onChange={(e:any) => setTall(Number(e.target.value))}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTall(Number(e.target.value))}
                             />
                         ) : (
-                            <S.value>{tall} cm</S.value>
+                            <S.Value>{tall} cm</S.Value>
                         )}
-                        <S.valuename>몸무게</S.valuename>
+                        <S.ValueName>몸무게</S.ValueName>
                         {isEditing ? (
-                            <S.input
+                            <S.Input
                                 type="number"
-                                step="0.1"
+                                step="1"
                                 value={weight}
-                                onChange={(e:any) => setWeight(Number(e.target.value))}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWeight(Number(e.target.value))}
                             />
                         ) : (
-                            <S.value>{weight.toFixed(1)} kg</S.value>
+                            <S.Value>{weight.toFixed(1)} kg</S.Value>
                         )}
-                        <S.valuename>활동 지수</S.valuename>
+                        <S.ValueName>활동 지수</S.ValueName>
                         {isEditing ? (
-                            <S.input
+                            <S.Input
                                 type="number"
                                 value={activity}
-                                onChange={(e:any) => setActivity(Number(e.target.value))}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setActivity(Number(e.target.value))}
                                 min={0}
                                 max={1}
                                 step={0.1}
                             />
                         ) : (
-                            <S.value>{activity}</S.value>
+                            <S.Value>{activity}</S.Value>
                         )}
-                        <S.valuename>나이</S.valuename>
+                        <S.ValueName>나이</S.ValueName>
                         {isEditing ? (
-                            <S.input
+                            <S.Input
                                 type="number"
                                 value={age}
-                                onChange={(e:any) => setAge(Number(e.target.value))}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAge(Number(e.target.value))}
                             />
                         ) : (
-                            <S.value>만 {age}세</S.value>
+                            <S.Value>만 {age}세</S.Value>
                         )}
-                        <S.valuename>성별</S.valuename>
+                        <S.ValueName>성별</S.ValueName>
                         {isEditing ? (
-                            <S.select value={gender} onChange={(e:any) => setGender(Number(e.target.value))}>
+                            <S.Select value={gender} onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setGender(Number(e.target.value))}>
                                 <option value={1}>남</option>
                                 <option value={2}>여</option>
-                            </S.select>
+                            </S.Select>
                         ) : (
-                            <S.value>{genderload(gender)}</S.value>
+                            <S.Value>{genderload(gender)}</S.Value>
                         )}
-                        <S.valuename>BMI지수</S.valuename>
-                        <S.value>{(weight / ((tall / 100) ** 2)).toFixed(1)}</S.value>
-                    </S.valuebox>
-                    <S.editbutton onClick={handleEditClick}>
+                        <S.ValueName>BMI지수</S.ValueName>
+                        <S.Value>{bmi.toFixed(1)}</S.Value>
+                    </S.ValueBox>
+                    <S.EditButton onClick={handleEditClick}>
                         {isEditing ? '수정 완료' : '정보 수정 하기'}
-                    </S.editbutton>
-                </S.rightbox>
-            </S.mainbox>
+                    </S.EditButton>
+                </S.RightBox>
+            </S.MainBox>
         </div>
     );
 };
