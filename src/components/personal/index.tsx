@@ -1,40 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from '@/components/personal/index.style';
-
 import CharacterImg from '@/assets/fit.svg';
 import InfoIcon from '@/assets/info_icon.svg';
 import InfoImg from "@/assets/main/info.svg";
 import MealDiary from "@/assets/main/mealdiary.svg";
 import Recommend from '@/assets/main/recommendrice.svg';
-
 import FatMyImg from "@/assets/main/fatmyimg.svg";
 import BMIbar from "@/assets/main/BMIbar.svg";
-
 import { useNavigate } from "react-router-dom";
 import CalorieChart from '@/components/chart/CalorieChart'; 
 
-interface DashboardProps {
-  userName: string;
-}
+const foodOptions = [
+  { name: '돈가스_고구마', calories: 300, weight: '315g' },
+  { name: '피자_리코타 페퍼로니 킹덤 피자 나폴리 (L)', calories: 257, weight: '896g' },
+  { name: '피자_대만 콘 치즈 감자 피자 오리지널 (L)', calories: 257, weight: '542g' },
+  { name: '버거_빅맥 버거', calories: 268, weight: '877g' },
+  { name: '피자_리코타 페퍼로니 킹덤 피자 더블치즈 엣지 (M)', calories: 267, weight: '1085g' },
+  { name: '피자_리코타 페퍼로니 킹덤 피자 나폴리 (L)', calories: 262, weight: '1083g' },
+  { name: '버거_맥치킨모짜렐라 버거', calories: 262, weight: '1046g' },
+  { name: '기타차_레몬페퍼민트티 아이스(ICED)', calories: 25, weight: '650g' },
+  { name: '귤차_제주청귤티 핫(HOT)', calories: 44, weight: '500g' },
+  { name: '기타차_레몬페퍼민트티 핫(HOT)', calories: 34, weight: '650g' },
+  { name: '된장국_시금치', calories: 15, weight: '190ml' },
+  { name: '미역국_바지락', calories: 8, weight: '190ml' },
+  { name: '허브차_캐모마일 아이스(ICED)', calories: 0, weight: '500g' },
+  { name: '허브차_캐모마일 아이스(ICED)', calories: 0, weight: '650g' },
+  { name: '커피_디카페인 아메리카노 핫(HOT)', calories: 1, weight: '100g' },
+];
 
-// const Dashboard: React.FC<DashboardProps> = ({ userName }) => {
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [recommendedMeals, setRecommendedMeals] = useState([]);
+
   const profile = () => {
     navigate("/profile");
   }
+
+  const getRandomMeal = () => {
+    const randomIndex = Math.floor(Math.random() * foodOptions.length);
+    const selectedMeal = foodOptions[randomIndex];
+    setRecommendedMeals(prevMeals => [
+      ...prevMeals,
+      selectedMeal
+    ]);
+  }
+
   return (
     <S.Container>
       <S.HealthStatus onClick={profile}>
         <S.HealtTitle>
-          {/* <div>{userName}</div> */}
           <S.HealthTitleNameWrap>
             <S.HealthTitleName>김민규</S.HealthTitleName>
           </S.HealthTitleNameWrap>
           <S.HealthNow>님의 건강상태</S.HealthNow>
         </S.HealtTitle>
-
-        {/* <S.Title>김민규 님의 건강상태</S.Title> */}
         <S.CharacterImg>우리 아이의 건강상태는?</S.CharacterImg>
         <S.HeightWeight>
           <S.Height>키: ?</S.Height>
@@ -58,7 +77,7 @@ const Dashboard = () => {
         </S.Meal>
         <S.Meal>
           <S.MealTime>점심</S.MealTime>
-          <S.MealDetails>후리가케멸치밥, 맑은쇠고기무국, <br />멸치볶음, 잡채, 양배추무침</S.MealDetails>
+          <S.MealDetails>후리가케멸치밥, 맑은쇠고기무국,<br />멸치볶음, 잡채, 양배추무침</S.MealDetails>
           <S.Calories>1030kcal</S.Calories>
         </S.Meal>
         <S.Meal>
@@ -71,34 +90,18 @@ const Dashboard = () => {
       <S.RecommendedDiet>
         <S.InfoIcon src={Recommend} alt="Info" />
         <S.Title>추천 식단</S.Title>
-        <S.RecreateButton>다시 생성하기</S.RecreateButton>
-        <S.Meal>
-          <S.MealTime>아침</S.MealTime>
-          <S.MealDetails>현미밥, 닭가슴살, 시금치, 방울토마토, 사과</S.MealDetails>
-          <S.Caloriese>493kcal</S.Caloriese>
-        </S.Meal>
-        <S.Meal>
-          <S.MealDetails>그릭 요거트, 견과류, 과일, 통곡물 시리얼</S.MealDetails>
-          <S.Caloriese>590kcal</S.Caloriese>
-        </S.Meal>
-        <S.Meal>
-          <S.MealTime>점심</S.MealTime>
-          <S.MealDetails>닭가슴살 샐러드, 현미밥, 된장국</S.MealDetails>
-          <S.Caloriese>650kcal</S.Caloriese>
-        </S.Meal>
-        <S.Meal>
-          <S.MealDetails>연어구이, 통곡물 밥, 샐러드</S.MealDetails>
-          <S.Caloriese>590kcal</S.Caloriese>
-        </S.Meal>
-        <S.Meal>
-          <S.MealTime>저녁</S.MealTime>
-          <S.MealDetails>닭가슴살 구이, 샐러드, 현미밥</S.MealDetails>
-          <S.Caloriese>590kcal</S.Caloriese>
-        </S.Meal>
-        <S.Meal>
-          <S.MealDetails>연어찜, 볶음 채소, 고구마</S.MealDetails>
-          <S.Caloriese>550kcal</S.Caloriese>
-        </S.Meal>
+        <S.RecreateButton onClick={getRandomMeal}>다시 생성하기</S.RecreateButton>
+        {recommendedMeals.length > 0 ? (
+          recommendedMeals.map((meal, index) => (
+            <S.Meal key={index}>
+              <S.MealDetails>음식명: {meal.name}, 칼로리: {meal.calories} kcal, 중량: {meal.weight}</S.MealDetails>
+            </S.Meal>
+          ))
+        ) : (
+          <S.Meal>
+            <S.MealDetails>추천 식단이 없습니다. "다시 생성하기"를 클릭해 주세요.</S.MealDetails>
+          </S.Meal>
+        )}
       </S.RecommendedDiet>
 
       <S.CalorieInfo>
@@ -119,7 +122,7 @@ const Dashboard = () => {
           </S.CalorieItem>
         </S.CalorieDetails>
         <S.CalorieChart>
-          <CalorieChart /> 
+          <CalorieChart />
         </S.CalorieChart>
       </S.CalorieInfo>
     </S.Container>

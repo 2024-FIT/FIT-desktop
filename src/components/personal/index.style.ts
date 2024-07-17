@@ -160,6 +160,7 @@ export const DietDiary = styled.div`
 
 export const Meal = styled.div`
   margin-bottom: 8px;
+  
 `;
 
 export const MealTime = styled.div`
