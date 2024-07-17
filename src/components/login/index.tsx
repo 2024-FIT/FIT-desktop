@@ -6,9 +6,9 @@ import config from "@/components/constants/login/config.json";
 import LoginButton from "@/components/button/login/index";
 import TextField from "@/components/textfield/index";
 import CustomAlert from "@/components/alert/index";
-import seugiImg from "@/assets/image/onbording/Start/seugilogo.svg";
-import showPasswordimg from "@/assets/image/onbording/show_fill.svg";
-import hidePasswordimg from "@/assets/image/onbording/hide_fill.svg";
+import fitImg from "@/assets/login/fitgreen.svg";
+import showPasswordimg from "@/assets/login/show_fill.svg";
+import hidePasswordimg from "@/assets/login/hide_fill.svg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -35,16 +35,13 @@ const Login = () => {
         },
       });
 
-      console.log(res.data.data.length);
-
       if (res.data.data && res.data.data.length === 0) {
         navigate("/unhome");
       } else {
         navigate("/home");
       }
     } catch (error) {
-      console.log("Error fetching workspace:", error);
-      setAlertMessage("워크스페이스 정보를 가져오는 중 오류가 발생했습니다.");
+      setAlertMessage(".");
       setShowAlert(true);
     }
   };
@@ -53,10 +50,7 @@ const Login = () => {
     try {
       const res = await axios.post(
         `${config.serverurl}/member/login`,
-        {
-          email,
-          password,
-        },
+        { email, password },
         {
           headers: {
             "Content-Type": "application/json",
@@ -64,16 +58,11 @@ const Login = () => {
         }
       );
 
-      if (res.status !== 200) {
-        return;
-      }
+      if (res.status !== 200) return;
 
       const { accessToken, refreshToken } = res.data.data;
-
       window.localStorage.setItem("accessToken", accessToken);
       window.localStorage.setItem("refreshToken", refreshToken);
-
-      console.log(res);
 
       importWorkspace();
     } catch (error) {
@@ -81,27 +70,22 @@ const Login = () => {
         "등록되지 않은 아이디이거나 아이디 또는 비밀번호를 잘못 입력했습니다"
       );
       setShowAlert(true);
-      console.log(error);
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleLogin();
-    }
+    if (e.key === "Enter") handleLogin();
   };
 
-  const handleCloseAlert = () => {
-    setShowAlert(false);
-  };
+  const handleCloseAlert = () => setShowAlert(false);
 
   return (
     <S.LoginMain>
       <S.LoginFirstWrap>
         <S.Fheader>
           <S.Header>
-            <S.SeugiImg data={seugiImg} />
-            <S.Title2> 반가워요! </S.Title2>
+            <S.FitImg data={fitImg} />
+            <S.Title2>반가워요!</S.Title2>
           </S.Header>
         </S.Fheader>
         <S.Inputarea>
@@ -145,10 +129,10 @@ const Login = () => {
             </S.Enterinfo>
           </S.Inputpart>
           <S.Buttonpart>
-            <LoginButton text="로그인" onClick={handleLogin} />
+            {/* 로그인 버튼 영역은 제외 */}
             <S.Body1>
               계정이 없으시다면?{" "}
-              <S.Gosignup href="http://localhost:5173/emailsignup">
+              <S.Gosignup href="http://localhost:5173/signup">
                 가입하기
               </S.Gosignup>{" "}
             </S.Body1>

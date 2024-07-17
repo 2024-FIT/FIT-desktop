@@ -14,7 +14,7 @@ export const LoginFirstWrap = styled.div`
     z-index:0;
     display: flex;
     width: 485px;
-    height: 581px;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -38,25 +38,16 @@ export const Header = styled.div`
     align-items: center;
     gap: 16px;
     flex: 1 0 0;
-    /* justify-content: center; */
-
     align-self: stretch;
-    background: var(--Primary-Primary300, #7EC4FC);
+    background: #A2CC71;
 `;
 
-export const SeugiImg = styled.object`
-
-    width: 32px;
-    min-width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-
-    fill: var(--Gradient-Primary, linear-gradient(180deg, #1C8DF4 0%, #21B6E5 100%));
+export const FitImg = styled.object`
+    width: 37px;
 `;
 
 export const Title2 = styled.span`
     color: #FFF;
-    
     display:flex;
     font-family: 'Pretendard-Regular', sans-serif;
     font-size: 24px;
@@ -64,7 +55,6 @@ export const Title2 = styled.span`
     font-weight: 700;
     line-height: 130%; /* 31.2px */
 `;
-
 
 export const Inputarea = styled.div`
     display: flex;
@@ -96,7 +86,6 @@ export const Enterinfo = styled.div`
 
 export const Subtitle2 = styled.div`
     color: var(--Black, #000);
-    
     font-family: 'Pretendard-Regular', sans-serif;
     font-size: 16px;
     font-style: normal;
@@ -107,14 +96,12 @@ export const Subtitle2 = styled.div`
 
 export const Redstar = styled.a`
     color: var(--Red-Red500, #F90707);
-    
     font-family: 'Pretendard-Regular', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 130%;
 `;
-
 
 export const Loginbtn = styled.button`
     display: flex;
@@ -124,18 +111,15 @@ export const Loginbtn = styled.button`
     align-items: center;
     gap: 10px;
     align-self: stretch;
-
     border-radius: var(--Large, 12px);
-    background: var(--Primary-Primary500, #1D93F3);
+    background: #A2CC71;
     border:none;
     color: var(--Sub-White, #FFF);
-
     font-family: 'Pretendard-Regular', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 130%;
-
     cursor: pointer;
 `;
 
@@ -150,7 +134,6 @@ export const Buttonpart = styled.div`
 
 export const Body1 = styled.div`
     color: var(--Gray-Gray600, #787878);
-
     font-family: 'Pretendard-Regular', sans-serif;
     font-size: 14px;
     font-style: normal;
@@ -159,20 +142,17 @@ export const Body1 = styled.div`
 `;
 
 export const Gosignup = styled.a`
-    color: var(--Primary-Primary500, #1D93F3);
-    
+    color: #A2CC71;
     font-family: 'Pretendard-Regular', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
     line-height: 130%;
-
     text-decoration: none;
 `;
 
 export const Caption1 = styled.div`
     color: var(--Gray-Gray500, #AAA);
-
     font-family: 'Pretendard-Regular', sans-serif;
     font-size: 12px;
     font-style: normal;
@@ -188,7 +168,6 @@ export const Orpart = styled.div`
     gap: 16px;
     align-self: stretch;
 `;
-
 
 export const Oauthpart = styled.div`
     display: flex;
@@ -237,7 +216,7 @@ export const LogoImg = styled.img`
     width: 25px;
     height: 25px;
     flex-shrink: 0;
-`
+`;
 
 export const Cloud1 = styled.img`
     position:absolute;
@@ -246,7 +225,7 @@ export const Cloud1 = styled.img`
     flex-shrink: 0;
     top: 39vh;
     fill: linear-gradient( rgba(255, 255, 255, 0.20) 0%, rgba(0, 194, 255, 0.20) 100%), #DAE8FF;
-`
+`;
 
 export const Cloud2 = styled.img`
     position:absolute;
@@ -255,7 +234,7 @@ export const Cloud2 = styled.img`
     flex-shrink: 0;
     top: 45vh;
     fill: #F2F7FF;
-`
+`;
 
 export const Sun = styled.img`
     position: absolute;
@@ -266,8 +245,8 @@ export const Sun = styled.img`
     flex-shrink: 0;
     border-radius: 342px;
     background: linear-gradient( rgba(255, 255, 255, 0.50) 0%, rgba(255, 199, 0, 0.50) 100%), #FFC700;
-`
+`;
 
 export const Dividerimg = styled.img`
     flex-shrink: 0;
-`
+`;
