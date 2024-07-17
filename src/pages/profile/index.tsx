@@ -28,7 +28,7 @@ const Index: React.FC = () => {
 
     const navigate = useNavigate();
     const reback = () => {
-        navigate("/home");
+        navigate("/main");
     }
 
     const bmi = Number((weight / ((tall / 100) ** 2)).toFixed(1));
