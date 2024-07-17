@@ -28,6 +28,7 @@ const Dashboard = () => {
                 </S.HealthTitleNameWrap>
                 <S.HealthNow>님의 건강상태</S.HealthNow>
             </S.HealtTitle>
+
           {/* <S.Title>김민규 님의 건강상태</S.Title> */}
           <S.CharacterImg>우리 아이의 건강상태는?</S.CharacterImg>
           <S.HeightWeight>
