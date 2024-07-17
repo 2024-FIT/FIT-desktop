@@ -5,7 +5,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: flex-start;
 
-  margin-left: 130px;
+  margin-left: 2%;
   margin-top: 30px;
 `;
 
@@ -85,8 +85,38 @@ export const NavButton = styled.button`
 `;
 
 export const MealDetails = styled.div`
-  flex: 1;
+    width: 415px;
+    height: 711px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--Sub-White, #FFF);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 `;
+
+
+export const TodayMenuImg = styled.img`
+    width: 32px;
+    height: 32px;
+`
+
+export const TodayMenuWrap = styled.div`
+    display: flex;
+    align-items: center;
+    margin-top: 23px;
+    margin-left: 33px;
+`
+
+export const TodayMenu = styled.span`
+    color: #000;
+
+    /* Subtitle2 */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 20.8px */
+    margin-left: 8px; 
+`
 
 export const EventForm = styled.form`
   margin-top: 20px;

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as S from '@/components/calendar/index.style';
 
+import TodayMenuImg from "@/assets/today/todaymymeal.svg"
+
 const App: React.FC = () => {
   const [meals, setMeals] = useState<{ [key: string]: any[] }>({});
   const [date, setDate] = useState<Date>(new Date());
@@ -83,7 +85,10 @@ const App: React.FC = () => {
         
       </S.Sidebar>
       <S.MealDetails>
-      <h2>{new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).toISOString().slice(0, 10)}</h2>
+        <S.TodayMenuWrap>
+            <S.TodayMenuImg src={TodayMenuImg}/>
+            <S.TodayMenu>{new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).toISOString().slice(0, 10)}</S.TodayMenu>
+        </S.TodayMenuWrap>
         {meals[date.toISOString().slice(0, 10)] ? (
           <S.EventList>
             <thead>
@@ -123,3 +128,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
