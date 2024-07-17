@@ -38,14 +38,12 @@ const Navbar = () => {
                     onClick={() => handleButtonClick("profile", "/profile")}
                     $isSelected={selected === "profile"}
                 >
-                    {/* Add any relevant image or content here for profile */}
                 </S.SideBarButton>
-                <S.SideAvatarImgWrap>
+                <S.SideAvatarImgWrap onClick={() => handleButtonClick("profile", "/profile")}>
                     <S.SideAvatarImg src={AvatarImg} />
                 </S.SideAvatarImgWrap>
             </S.SideBarMenu>
             <S.Content>
-                {/* Add any content here */}
             </S.Content>
         </S.Container>
     );
