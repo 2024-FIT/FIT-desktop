@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as S from '@/components/calendar/index.style';
-import Search from '@/components/search/index';
-import TodayMenuImg from "@/assets/today/todaymymeal.svg";
+
+import TodayMenuImg from "@/assets/today/todaymymeal.svg"
+import PlusButton from "@/assets/today/plus-circle.svg"
 
 const App: React.FC = () => {
   const [meals, setMeals] = useState<{ [key: string]: any[] }>({});
   const [date, setDate] = useState<Date>(new Date());
+  const [mealType, setMealType] = useState<string>('아침');
+  const [mealDetails, setMealDetails] = useState<string>('');
 
   useEffect(() => {
     const today = new Date();
     setDate(new Date(today.getFullYear(), today.getMonth(), today.getDate()));
   }, []);
 
-  const addMeal = (mealType: string, mealDetails: string) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     const dateString = date.toISOString().slice(0, 10);
     const newMeal = { mealType, mealDetails };
 
@@ -21,6 +25,7 @@ const App: React.FC = () => {
       ...meals,
       [dateString]: [...(meals[dateString] || []), newMeal],
     });
+    setMealDetails('');
   };
 
   const generateCalendar = () => {
@@ -78,18 +83,19 @@ const App: React.FC = () => {
             {generateCalendar()}
           </S.CalendarGrid>
         </S.CalendarContainer>
+        
       </S.Sidebar>
       <S.MealDetails>
         <S.TodayMenuWrap>
-          <S.TodayMenuImg src={TodayMenuImg} />
-          <S.TodayMenu>{date.toISOString().slice(0, 10)}</S.TodayMenu>
+            <S.TodayMenuImg src={TodayMenuImg}/>
+            <S.TodayMenu>{new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).toISOString().slice(0, 10)}</S.TodayMenu>
         </S.TodayMenuWrap>
         {meals[date.toISOString().slice(0, 10)] ? (
           <S.EventList>
             <thead>
               <tr>
-                <th>Meal Type</th>
-                <th>Details</th>
+                <th>식사 종류</th>
+                <th>상세 내역</th>
               </tr>
             </thead>
             <tbody>
@@ -102,13 +108,28 @@ const App: React.FC = () => {
             </tbody>
           </S.EventList>
         ) : (
-          <p>오늘 먹은 식사가 없어요 ㅜㅜ</p>
+          <S.TodayNotEat>오늘 먹은 식사가 없어요 ㅜㅜ</S.TodayNotEat>
         )}
-        <Search addMeal={addMeal} />
+        <S.EventForm onSubmit={handleSubmit}>
+        <S.MealTypeSelecter value={mealType} onChange={(e) => setMealType(e.target.value)}>
+          <option value="아침">아침</option>
+          <option value="점심">점심</option>
+          <option value="저녁">저녁</option>
+        </S.MealTypeSelecter>
+        <textarea
+          placeholder="식사 상세 내용"
+          value={mealDetails}
+          onChange={(e) => setMealDetails(e.target.value)}
+        />
+        <S.SubmitButton type="submit">
+            <img src={PlusButton}/>
+        </S.SubmitButton>
+      </S.EventForm>
       </S.MealDetails>
     </S.Container>
   );
 };
 
 export default App;
+
 

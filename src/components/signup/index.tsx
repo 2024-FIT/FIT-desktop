@@ -1,33 +1,38 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import * as S from '@/components/signup/index.style';
-import hidePasswordimg from '@/assets/login/hide_fill.svg'
+import hidePasswordimg from '@/assets/login/hide_fill.svg';
 import showPasswordimg from '@/assets/login/show_fill.svg';
 import Button from '@/components/button/login/index';
 import TextField from '@/components/textfield/index';
 import useSignup from '@/hooks/signup/useSignup';
 import { useNavigate } from 'react-router-dom';
 
-const emailsignup = () => {
+const EmailSignup = () => {
     const navigate = useNavigate();
-    const { ...signUp } = useSignup();
+    const { name, username, password, showPassword, errorMessage, handleNameChange, handleUsernameChange, handlePasswordChange, handleKeyDown, togglePasswordVisibility, handleSignup } = useSignup();
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => {
             document.body.style.overflow = 'auto';
-        }
+        };
     }, []);
 
     const Backclick = () => {
-        navigate('/')
-    }
+        navigate('/');
+    };
+
+    const handleSignupClick = async () => {
+        await handleSignup(); 
+
+        navigate('/login');
+    };
 
     return (
         <S.EmailMain>
             <S.EmailFirstWrap>
                 <S.Header>
-                    <S.BackButton onClick={Backclick}>
-                    </S.BackButton>
+                    <S.BackButton onClick={Backclick}></S.BackButton>
                     <S.Title1> 새 계정 만들기 </S.Title1>
                 </S.Header>
                 <S.TxtContainer>
@@ -37,25 +42,25 @@ const emailsignup = () => {
                         </S.Subtitle>
                         <S.InputContainer>
                             <TextField
-                                value="name"
-                                placeholder='이름을 입력해주세요'
-                                onChange={signUp.handleNameChange}
-                                style={{ border: "none" }}
-                                onKeyDown={signUp.handleKeyDown}
+                                value={name}
+                                placeholder="이름을 입력해주세요"
+                                onChange={handleNameChange}
+                                style={{ border: 'none' }}
+                                onKeyDown={handleKeyDown}
                             />
                         </S.InputContainer>
                     </S.EneterInfo>
                     <S.EneterInfo>
                         <S.Subtitle>
-                            <S.Body1> 이메일 <S.Redstar>*</S.Redstar> </S.Body1>
+                            <S.Body1> 사용자 이름 <S.Redstar>*</S.Redstar> </S.Body1>
                         </S.Subtitle>
                         <S.InputContainer>
                             <TextField
-                                value='email'
-                                style={{ border: "none" }}
-                                placeholder='이메일을 입력해주세요'
-                                onChange={signUp.handleEmailChange}
-                                onKeyDown={signUp.handleKeyDown}
+                                value={username}
+                                style={{ border: 'none' }}
+                                placeholder="사용자 이름을 입력해주세요"
+                                onChange={handleUsernameChange}
+                                onKeyDown={handleKeyDown}
                             />
                         </S.InputContainer>
                     </S.EneterInfo>
@@ -65,47 +70,29 @@ const emailsignup = () => {
                         </S.Subtitle>
                         <S.InputContainer>
                             <TextField
-                                value='password'
-                                style={{ border: "none" }}
-                                type={signUp.showPassword ? 'text' : 'password'}
-                                placeholder='비밀번호를 입력해주세요'
-                                onChange={signUp.handlePasswordChange}
-                                onKeyDown={signUp.handleKeyDown}
+                                value={password}
+                                style={{ border: 'none' }}
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder="비밀번호를 입력해주세요"
+                                onChange={handlePasswordChange}
+                                onKeyDown={handleKeyDown}
                             />
-                            <S.Btnview onClick={signUp.togglePasswordVisibility}>
-                                {signUp.showPassword ? <img src={hidePasswordimg} alt="숨기기" /> : <img src={showPasswordimg} alt="보이기" />}
+                            <S.Btnview onClick={togglePasswordVisibility}>
+                                {showPassword ? <img src={hidePasswordimg} alt="숨기기" /> : <img src={showPasswordimg} alt="보이기" />}
                             </S.Btnview>
                         </S.InputContainer>
                     </S.EneterInfo>
-                    <S.EneterInfo>
-                        <S.Subtitle>
-                            <S.Body1> 비밀번호 확인 <S.Redstar>*</S.Redstar> </S.Body1>
-                        </S.Subtitle>
-                        <S.InputContainer>
-                            <TextField
-                                value="confirmPassword"
-                                style={{ border: "none" }}
-                                type={signUp.showConfirmPassword ? 'text' : 'password'}
-                                placeholder='비밀번호를 다시 입력해주세요'
-                                onChange={signUp.handleConfirmPasswordChange}
-                                onKeyDown={signUp.handleKeyDown}
-                            />
-                            <S.Btnview onClick={signUp.toggleConfirmPasswordVisibility}>
-                                {signUp.showConfirmPassword ? <img src={hidePasswordimg} alt="숨기기" /> : <img src={showPasswordimg} alt="보이기" />}
-                            </S.Btnview>
-                        </S.InputContainer>
-                        {signUp.errorMessage && <S.ErrorText>{signUp.errorMessage}</S.ErrorText>}
-                    </S.EneterInfo>
+                    {errorMessage && <S.ErrorText>{errorMessage}</S.ErrorText>}
                 </S.TxtContainer>
                 <S.ButtonContainer>
-                    <Button onClick={signUp.handleSignup} />
+                    <Button onClick={handleSignupClick} />
                     <S.EmailCheck>
-                        <S.Haveemail href='http://localhost:5173/login'>이미 계정이 있으신가요?</S.Haveemail>
+                        <S.Haveemail href="http://localhost:5173/login">이미 계정이 있으신가요?</S.Haveemail>
                     </S.EmailCheck>
                 </S.ButtonContainer>
             </S.EmailFirstWrap>
         </S.EmailMain>
-    )
-}
+    );
+};
 
-export default emailsignup;
+export default EmailSignup;

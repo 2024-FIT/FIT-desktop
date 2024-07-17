@@ -10,22 +10,27 @@ import fitImg from "@/assets/login/fitgreen.svg";
 import showPasswordimg from "@/assets/login/show_fill.svg";
 import hidePasswordimg from "@/assets/login/hide_fill.svg";
 
+// import 문은 생략
+
 const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // 페이지가 로드될 때 body의 overflow를 hidden으로 설정하여 스크롤 방지
     document.body.style.overflow = "hidden";
     return () => {
+      // 컴포넌트가 언마운트될 때 다시 auto로 복원하여 스크롤을 복구
       document.body.style.overflow = "auto";
     };
   }, []);
 
-  const [email, setEmail] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState<string>("");
 
+  // 워크스페이스를 가져오는 함수
   const importWorkspace = async () => {
     try {
       const token = window.localStorage.getItem("accessToken");
@@ -35,22 +40,25 @@ const Login = () => {
         },
       });
 
+      // 워크스페이스가 없으면 "/unhome"으로 이동, 있으면 "/home"으로 이동
       if (res.data.data && res.data.data.length === 0) {
         navigate("/unhome");
       } else {
         navigate("/home");
       }
     } catch (error) {
-      setAlertMessage(".");
+      // 에러 발생 시 경고창 표시
+      setAlertMessage("워크스페이스를 불러오는 중 오류가 발생했습니다.");
       setShowAlert(true);
     }
   };
 
+  // 로그인 처리 함수
   const handleLogin = async () => {
     try {
       const res = await axios.post(
         `${config.serverurl}/member/login`,
-        { email, password },
+        { username, password },
         {
           headers: {
             "Content-Type": "application/json",
@@ -58,17 +66,20 @@ const Login = () => {
         }
       );
 
-      if (res.status !== 200) return;
+      if (res.status === 200) {
+        const { accessToken, refreshToken } = res.data.data;
+        window.localStorage.setItem("accessToken", accessToken);
+        window.localStorage.setItem("refreshToken", refreshToken);
 
-      const { accessToken, refreshToken } = res.data.data;
-      window.localStorage.setItem("accessToken", accessToken);
-      window.localStorage.setItem("refreshToken", refreshToken);
-
-      importWorkspace();
+        importWorkspace();
+      } else {
+        setAlertMessage(
+          "등록되지 않은 아이디이거나 아이디 또는 비밀번호를 잘못 입력했습니다."
+        );
+        setShowAlert(true);
+      }
     } catch (error) {
-      setAlertMessage(
-        "등록되지 않은 아이디이거나 아이디 또는 비밀번호를 잘못 입력했습니다"
-      );
+      setAlertMessage("서버와의 연결 중 오류가 발생했습니다.");
       setShowAlert(true);
     }
   };
@@ -92,14 +103,14 @@ const Login = () => {
           <S.Inputpart>
             <S.Enterinfo>
               <S.Subtitle2>
-                이메일 <S.Redstar>*</S.Redstar>
+                ID <S.Redstar>*</S.Redstar>
               </S.Subtitle2>
               <S.InputContainer>
                 <TextField
-                  value={email}
+                  value={username}
                   type="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="이메일을 입력해주세요"
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="ID를 입력해주세요"
                   onKeyDown={handleKeyDown}
                   style={{ border: "none" }}
                 />
@@ -129,7 +140,7 @@ const Login = () => {
             </S.Enterinfo>
           </S.Inputpart>
           <S.Buttonpart>
-            {/* 로그인 버튼 영역은 제외 */}
+            <LoginButton onClick={handleLogin} />
             <S.Body1>
               계정이 없으시다면?{" "}
               <S.Gosignup href="http://localhost:5173/signup">

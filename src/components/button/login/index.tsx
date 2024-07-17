@@ -7,6 +7,7 @@ interface SeugiButtonProps {
 }
 
 
+
 const Button: React.FC<SeugiButtonProps> = ({ text = '계속하기', onClick }) => {
   return (
     <S.Continuebtn onClick={onClick}>
