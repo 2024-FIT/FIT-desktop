@@ -33,6 +33,55 @@ export const Character = styled.div`
     top: 50%;
 `;
 
+export const lowtitle = styled.span`
+    position:absolute;
+    top:81%;
+    left: 5%;
+`
+export const lownum = styled.span`
+    position:absolute;
+    top:85%;
+    left: 16%;
+`
+export const normaltitle = styled.span`
+    position:absolute;
+    top:81%;
+    left: 23%;
+`
+export const normalnum = styled.span`
+    position:absolute;
+    top:85%;
+    left: 38%;
+`
+
+export const level1title = styled.span`
+    position:absolute;
+    top:81%;
+    left: 42%;
+`
+export const level1num = styled.span`
+    position:absolute;
+    top:85%;
+    left: 52%;
+`
+export const level2title = styled.span`
+    position:absolute;
+    top:81%;
+    left: 65%;
+`
+
+export const level2num = styled.span`
+    position:absolute;
+    top:85%;
+    left: 80%;
+`
+
+export const level3title = styled.span`
+    position:absolute;
+    top:81%;
+    left: 86%;
+`
+
 export const Back = styled.img`
     width: 39px;
     height: 31px;

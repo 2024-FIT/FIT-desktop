@@ -62,6 +62,15 @@ const Index: React.FC = () => {
                     </S.Title>
                     <S.Character style={{ backgroundImage: `url(${getCharacterImage()})` }} />
                     <Bmibar bmi={bmi} />
+                    <S.lowtitle>저체중</S.lowtitle>
+                    <S.lownum>18.5</S.lownum>
+                    <S.normaltitle>정상체중</S.normaltitle>
+                    <S.normalnum>25</S.normalnum>
+                    <S.level1title>과체중</S.level1title>
+                    <S.level1num>30</S.level1num>
+                    <S.level2title>비만</S.level2title>
+                    <S.level2num>40</S.level2num>
+                    <S.level3title>고도비만</S.level3title>
                 </S.LeftBox>
                 <S.RightBox>
                     <S.ValueBox>
