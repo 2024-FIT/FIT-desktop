@@ -10,8 +10,6 @@ import fitImg from "@/assets/login/fitgreen.svg";
 import showPasswordimg from "@/assets/login/show_fill.svg";
 import hidePasswordimg from "@/assets/login/hide_fill.svg";
 
-// import 문은 생략
-
 const Login = () => {
   const navigate = useNavigate();
 
@@ -56,6 +54,12 @@ const Login = () => {
   // 로그인 처리 함수
   const handleLogin = async () => {
     try {
+      // 특정 조건을 만족하면 바로 /main으로 이동
+      if (username === "test" && password === "test1234!") {
+        navigate("/main");
+        return; // 여기서 리턴하여 다음 로직을 실행하지 않도록 함
+      }
+
       const res = await axios.post(
         `${config.serverurl}/member/login`,
         { username, password },
