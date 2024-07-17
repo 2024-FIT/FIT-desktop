@@ -5,8 +5,12 @@ interface SideBarButtonProps {
     $isSelected: boolean;
 }
 
+export const Container = styled.div`
+    display: flex;
+`;
+
 export const SideBarMenu = styled.div`
-    position: absolute;
+    position: fixed;
     display: flex;
     width: 80px;
     height: 100vh;
@@ -26,6 +30,17 @@ export const SideBarMenu = styled.div`
         padding: 0 8px;
         position: fixed;
         bottom: 0;
+    }
+`;
+
+export const Content = styled.div`
+    margin-left: 80px;
+    padding: 16px;
+    flex-grow: 1;
+
+    @media (max-width: 768px) {
+        margin-left: 0;
+        padding-bottom: 60px;
     }
 `;
 
