@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import * as S from '@/components/calendar/index.style';
-
-import TodayMenuImg from "@/assets/today/todaymymeal.svg"
+import Search from '@/components/search/index';
+import TodayMenuImg from "@/assets/today/todaymymeal.svg";
 
 const App: React.FC = () => {
   const [meals, setMeals] = useState<{ [key: string]: any[] }>({});
   const [date, setDate] = useState<Date>(new Date());
-  const [mealType, setMealType] = useState<string>('아침');
-  const [mealDetails, setMealDetails] = useState<string>('');
 
   useEffect(() => {
     const today = new Date();
     setDate(new Date(today.getFullYear(), today.getMonth(), today.getDate()));
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const addMeal = (mealType: string, mealDetails: string) => {
     const dateString = date.toISOString().slice(0, 10);
     const newMeal = { mealType, mealDetails };
 
@@ -24,7 +21,6 @@ const App: React.FC = () => {
       ...meals,
       [dateString]: [...(meals[dateString] || []), newMeal],
     });
-    setMealDetails('');
   };
 
   const generateCalendar = () => {
@@ -82,12 +78,11 @@ const App: React.FC = () => {
             {generateCalendar()}
           </S.CalendarGrid>
         </S.CalendarContainer>
-        
       </S.Sidebar>
       <S.MealDetails>
         <S.TodayMenuWrap>
-            <S.TodayMenuImg src={TodayMenuImg}/>
-            <S.TodayMenu>{new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1).toISOString().slice(0, 10)}</S.TodayMenu>
+          <S.TodayMenuImg src={TodayMenuImg} />
+          <S.TodayMenu>{date.toISOString().slice(0, 10)}</S.TodayMenu>
         </S.TodayMenuWrap>
         {meals[date.toISOString().slice(0, 10)] ? (
           <S.EventList>
@@ -109,24 +104,11 @@ const App: React.FC = () => {
         ) : (
           <p>오늘 먹은 식사가 없어요 ㅜㅜ</p>
         )}
-        <S.EventForm onSubmit={handleSubmit}>
-        <select value={mealType} onChange={(e) => setMealType(e.target.value)}>
-          <option value="아침">아침</option>
-          <option value="점심">점심</option>
-          <option value="저녁">저녁</option>
-        </select>
-        <textarea
-          placeholder="Meal Details"
-          value={mealDetails}
-          onChange={(e) => setMealDetails(e.target.value)}
-        />
-        <button type="submit">Add Meal</button>
-      </S.EventForm>
+        <Search addMeal={addMeal} />
       </S.MealDetails>
     </S.Container>
   );
 };
 
 export default App;
-
 
