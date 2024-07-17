@@ -78,11 +78,17 @@ export const HealthStatus = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 1.2em;
-  margin-bottom: 8px;
+    color: #000;
 
-  margin-left: 40px;
-  margin-top: 15px;
+    /* Subtitle2 */
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 20.8px */
+
+    margin-left: 60px;
+    margin-top: 27px;
 `;
 
 export const CharacterImg = styled.h1`
@@ -233,8 +239,8 @@ export const InfoIcon = styled.img`
   width: 24px;
   height: 24px;
   margin-bottom: 16px;
-  margin-top:10px;
-  margin-left:10px;
+  margin-top:25px;
+  margin-left:25px;
   float:left;
 `;
 
@@ -248,23 +254,58 @@ export const CalorieDetails = styled.div`
 
 export const CalorieItem = styled.div`
     display: flex; justify-content: space-between;
+    margin-top: 20px;
 `
 
 
 export const CalorieLabel = styled.div`
-    font-size: 0.9em;
+    color: #000;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
     margin-left: 30px;
 `
 
 
 export const CalorieValue = styled.div`
-    font-size: 0.9em; 
-    font-weight: bold;
-    margin-right:30px;
+    margin-right:340px;
+
+    color: #000;
+
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 `
 
+export const CalorieValueRed = styled.div`
+    margin-right:340px;
+
+    color: #A2CC71;
+
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+`
+
+
 export const CalorieChart = styled.div`
-    width: 100%; 
-    height: 100px; 
-    background: #eee;;
+width: 281px;
+height: 212.992px;
+flex-shrink: 0;
+
+border-radius: 10px;
+background: var(--Sub-White, #FFF);
+
+box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+
+position: absolute;
+margin-left: 340px;
+margin-top: -170px;
+
 `

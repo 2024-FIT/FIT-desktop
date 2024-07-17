@@ -12,11 +12,13 @@
     "electron-build": "tsc && vite build && electron-builder"
   },
   "dependencies": {
+    "chart.js": "^4.4.3",
     "lottie-react": "^2.4.0",
     "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-big-calendar": "^1.13.1",
     "react-calendar": "^5.0.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.24.1",
     "recoil": "^0.7.7",
