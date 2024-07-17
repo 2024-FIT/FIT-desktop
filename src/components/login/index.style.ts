@@ -9,12 +9,12 @@ export const LoginMain = styled.div`
     justify-content: center;
     align-items: center;
 `;
-
+ 
 export const LoginFirstWrap = styled.div`
     z-index:0;
     display: flex;
     width: 485px;
-
+  
     flex-direction: column;
     justify-content: center;
     align-items: center;

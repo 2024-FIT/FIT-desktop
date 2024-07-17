@@ -1,8 +1,13 @@
 import React from 'react'
+import * as S from '@/pages/main/index.style';
+
+import Navbar from '@/components/navbar';
 
 const index = () => {
   return (
-    <div>index</div>
+    <S.Background>
+      <Navbar/>
+    </S.Background>
   )
 }
 
