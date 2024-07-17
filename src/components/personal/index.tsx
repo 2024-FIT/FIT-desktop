@@ -7,16 +7,21 @@ import InfoIcon from '@/assets/info_icon.png';
 import FatMyImg from "@/assets/main/fatmyimg.svg"
 import BMIbar from "@/assets/main/BMIbar.svg"
 
+import { useNavigate } from "react-router-dom";
 interface DashboardProps {
   userName: string;
 }
   
 //   const Dashboard: React.FC<DashboardProps> = ({ userName }) => {
 const Dashboard = () => {
+    const navigate = useNavigate();
+    const profile = () => {
+        navigate("/profile");
+    }
     return (
       <S.Container>
-        <S.HealthStatus>
-                <S.HealtTitle>
+        <S.HealthStatus onClick={profile}>
+            <S.HealtTitle>
                 {/* <div>{userName}</div> */}
                 <S.HealthTitleNameWrap>
                     <S.HealthTitleName>김민규</S.HealthTitleName>

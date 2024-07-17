@@ -28,6 +28,8 @@ const Navbar = () => {
         setSelectedChatRoom(null);
     };
 
+
+    
     useEffect(() => {
         // Load chat rooms from localStorage on component mount
         const storedChatRooms = localStorage.getItem("chatRooms");
