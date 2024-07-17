@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import * as S from '@/components/calendar/index.style';
 
 import TodayMenuImg from "@/assets/today/todaymymeal.svg"
+import PlusButton from "@/assets/today/plus-circle.svg"
 
 const App: React.FC = () => {
   const [meals, setMeals] = useState<{ [key: string]: any[] }>({});
@@ -93,8 +94,8 @@ const App: React.FC = () => {
           <S.EventList>
             <thead>
               <tr>
-                <th>Meal Type</th>
-                <th>Details</th>
+                <th>식사 종류</th>
+                <th>상세 내역</th>
               </tr>
             </thead>
             <tbody>
@@ -107,20 +108,22 @@ const App: React.FC = () => {
             </tbody>
           </S.EventList>
         ) : (
-          <p>오늘 먹은 식사가 없어요 ㅜㅜ</p>
+          <S.TodayNotEat>오늘 먹은 식사가 없어요 ㅜㅜ</S.TodayNotEat>
         )}
         <S.EventForm onSubmit={handleSubmit}>
-        <select value={mealType} onChange={(e) => setMealType(e.target.value)}>
+        <S.MealTypeSelecter value={mealType} onChange={(e) => setMealType(e.target.value)}>
           <option value="아침">아침</option>
           <option value="점심">점심</option>
           <option value="저녁">저녁</option>
-        </select>
+        </S.MealTypeSelecter>
         <textarea
-          placeholder="Meal Details"
+          placeholder="식사 상세 내용"
           value={mealDetails}
           onChange={(e) => setMealDetails(e.target.value)}
         />
-        <button type="submit">Add Meal</button>
+        <S.SubmitButton type="submit">
+            <img src={PlusButton}/>
+        </S.SubmitButton>
       </S.EventForm>
       </S.MealDetails>
     </S.Container>
