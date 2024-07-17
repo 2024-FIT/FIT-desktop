@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Onbording from "@/pages/onbording/index";
-import Info from '@/pages/info/index'
+import Login from '@/pages/login/index'
+import Signup from '@/pages/signup/index'
 import MainPage from "@/pages/main/index"
 
 const Router = () => {
@@ -11,7 +12,8 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Onbording />} />
         <Route path="/onbording" element={<Onbording />} />
-        <Route path="/info" element={<Info />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/main" element={<MainPage />} />
       </Routes>
     </BrowserRouter>

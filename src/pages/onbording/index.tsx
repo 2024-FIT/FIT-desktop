@@ -10,7 +10,7 @@ const Index = () => {
   const navigate = useNavigate();
 
   const handleStartClick = () => {
-    navigate('/info');
+    navigate('/login');
   };
 
   return (

@@ -42,12 +42,8 @@ export const Header = styled.div`
     background: #A2CC71;
 `;
 
-export const SeugiImg = styled.object`
-    width: 32px;
-    min-width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-    fill: var(--Gradient-Primary, linear-gradient(180deg, #A2CC71 0%, #21B6E5 100%));
+export const FitImg = styled.object`
+    width: 37px;
 `;
 
 export const Title2 = styled.span`

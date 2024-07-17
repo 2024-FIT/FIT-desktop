@@ -84,7 +84,7 @@ const Login = () => {
       <S.LoginFirstWrap>
         <S.Fheader>
           <S.Header>
-            <S.SeugiImg data={fitImg} />
+            <S.FitImg data={fitImg} />
             <S.Title2>반가워요!</S.Title2>
           </S.Header>
         </S.Fheader>
@@ -132,7 +132,7 @@ const Login = () => {
             {/* 로그인 버튼 영역은 제외 */}
             <S.Body1>
               계정이 없으시다면?{" "}
-              <S.Gosignup href="http://localhost:5173/emailsignup">
+              <S.Gosignup href="http://localhost:5173/signup">
                 가입하기
               </S.Gosignup>{" "}
             </S.Body1>
